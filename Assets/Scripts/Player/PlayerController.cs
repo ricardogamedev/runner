@@ -27,6 +27,9 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Text")]
     public TMP_Text uiTextPowerUp;
 
+    [Header("Text")]
+    public GameObject coinCollector;
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -116,6 +119,11 @@ public class PlayerController : Singleton<PlayerController>
         transform.position = p;
         */
         transform.DOMoveY(_startPosition.y, .1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 
     #endregion
