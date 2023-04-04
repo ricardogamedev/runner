@@ -17,18 +17,22 @@ public class PlayerController : Singleton<PlayerController>
 
     public GameObject endScreen;
 
-    private Vector3 _pos;
-    private bool _canRun;
-    private float _currentSpeed;
-    private Vector3 _startPosition;
-
     public bool invincible;
 
     [Header("Text")]
     public TMP_Text uiTextPowerUp;
 
-    [Header("Text")]
+    [Header("Coin Setup")]
     public GameObject coinCollector;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+
+    private Vector3 _pos;
+    private bool _canRun;
+    private float _currentSpeed;
+    private Vector3 _startPosition;
+    private float _baseSpeedToAnimation = 7;
 
     private void Start()
     {
@@ -52,7 +56,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if (!invincible) EndGame();
+            if (!invincible)
+            {
+                MoveBack(collision.transform);
+                EndGame(AnimatorManager.AnimationType.DEAD);
+            }
         }
     }
 
@@ -65,16 +73,23 @@ public class PlayerController : Singleton<PlayerController>
 
     }
 
-    private void EndGame()
+    private void MoveBack(Transform t)
+    {
+        t.DOMoveZ(1f, .3f).SetRelative();
+    }
+
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation);
     }
 
 
