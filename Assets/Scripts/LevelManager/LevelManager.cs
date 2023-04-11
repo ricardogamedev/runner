@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ebac.Core.Singleton;
 
 
 public class LevelManager : MonoBehaviour
@@ -70,18 +71,15 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i <_currentSetup.piecesStartNumber; i++)
         {
             CreateLevelPiece(_currentSetup.levelPiecesStart);
-
         }
 
         for (int i = 0; i < _currentSetup.piecesNumber; i++)
         {
             CreateLevelPiece(_currentSetup.levelPieces);
-
         }
         for (int i = 0; i < _currentSetup.piecesEndNumber; i++)
         {
             CreateLevelPiece(_currentSetup.levelPiecesEnd);
-
         }
 
         ColorManager.Instance.ChangeColorByType(_currentSetup.artType);
