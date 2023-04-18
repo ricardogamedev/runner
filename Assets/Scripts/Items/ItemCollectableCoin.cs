@@ -18,6 +18,7 @@ public class ItemCollectableCoin : ItemCollectableBase
         base.OnCollect();
         collider.enabled = false;
         collect = true;
+        PlayerController.Instance.Bounce();
 
     }
 
@@ -40,4 +41,10 @@ public class ItemCollectableCoin : ItemCollectableBase
         }
     }
 
+    private void OnDestroy()
+    {
+        CoinsAnimationManager.Instance.UnRegisterCoin(this);
+    }
 }
+//fazer o player ir da escala 0 para 1, assim ele cresce na tela quando começa o jogo
+//Quando pegar power up, fazer um bounce no player

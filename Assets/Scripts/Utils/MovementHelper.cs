@@ -25,22 +25,22 @@ public class MovementHelper : MonoBehaviour
 
     IEnumerator StartMovement()
     {
-        float time = 0;
+        float timeElapsed = 0;
 
         while (true)
         {
             var currentPosition = transform.position;
 
-            while (time < duration)
+            while (timeElapsed < duration)
             {
-                transform.position = Vector3.Lerp(currentPosition, positions[_index].transform.position, (time / duration));
+                transform.position = Vector3.Lerp(currentPosition, positions[_index].transform.position, (timeElapsed / duration));
 
-                time += Time.deltaTime;
+                timeElapsed += Time.deltaTime;
                 yield return null;
             }
 
             NextIndex();
-            time = 0;
+            timeElapsed = 0;
 
             yield return null;
         }

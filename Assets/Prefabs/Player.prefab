@@ -346,7 +346,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3202976170040318114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -389,7 +389,7 @@ BoxCollider:
   m_GameObject: {fileID: 3202976170040318114}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dee5f948339ff4eafa1be92b0ca29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pastPosition: {x: 50, y: 50}
-  velocity: 1
+  pastPosition: {x: 1, y: 1}
+  velocity: 1.5
 --- !u!1 &3202976170423506052
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 3202976170423506051}
   - component: {fileID: 3202976170423506061}
   - component: {fileID: 3202976170423506060}
+  - component: {fileID: 3753532568108844443}
   m_Layer: 0
   m_Name: PlayerContainer
   m_TagString: Player
@@ -520,8 +521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dee5f948339ff4eafa1be92b0ca29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pastPosition: {x: 0, y: 0}
-  velocity: 5
+  pastPosition: {x: 10, y: 10}
+  velocity: 1
 --- !u!54 &3202976170423506061
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -560,6 +561,22 @@ MonoBehaviour:
   uiTextPowerUp: {fileID: 3202976169971351387}
   coinCollector: {fileID: 3202976169893991840}
   animatorManager: {fileID: 3202976170032188095}
+  _bounceHelper: {fileID: 3753532568108844443}
+--- !u!114 &3753532568108844443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3202976170423506052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767e4ba46bc84e246be71b98a50b4fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDuration: 0.05
+  scaleBounce: 1.2
+  ease: 1
 --- !u!1001 &3202976168870479348
 PrefabInstance:
   m_ObjectHideFlags: 0

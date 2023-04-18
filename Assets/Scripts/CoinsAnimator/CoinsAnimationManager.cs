@@ -62,6 +62,13 @@ public class CoinsAnimationManager : Singleton<CoinsAnimationManager>
 
     }
 
+    public void UnRegisterCoin(ItemCollectableCoin i)
+    {
+        if (itens.Contains(i))
+        {
+            itens.Remove(i);
+        }
+    }
     private void Sort()
     {
         itens = itens.OrderBy(x => Vector3.Distance(this.transform.position, x.transform.position)).ToList();
